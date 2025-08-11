@@ -10,17 +10,17 @@ def decrypt_caesar(ciphertext, shift):
 
     for char in ciphertext:
         if char.islower():
-            # Find the position of the character and shift it back
+            
             index = lowercase.index(char)
             shifted_index = (index - shift) % 26
             decrypted_text += lowercase[shifted_index]
         elif char.isupper():
-            # Same for uppercase characters
+            
             index = uppercase.index(char)
             shifted_index = (index - shift) % 26
             decrypted_text += uppercase[shifted_index]
         else:
-            # Keep non-alphabetic characters (e.g., spaces, numbers) as they are
+            
             decrypted_text += char
             
     return decrypted_text
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     # Get user input for the ciphertext
     cipher_text = input("Enter the ciphertext to decrypt: ")
     
-    # Option 1: Decrypt with a known key
+   
     try:
         known_shift = int(input("Enter the known shift key (leave blank to brute-force): "))
         
@@ -52,7 +52,7 @@ if __name__ == "__main__":
         print(f"Decrypted Text: {decrypted_message}")
 
     except ValueError:
-        # If the user did not enter a number, perform a brute-force attack
+        # Perform a brute-force attack
         print("\n--- Brute-Force Decryption ---")
         brute_force_caesar(cipher_text)
         #End

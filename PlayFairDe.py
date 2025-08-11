@@ -37,14 +37,13 @@ def decrypt_digraph(digraph, key_table):
     
     decrypted_pair = ""
 
-    if r1 == r2: # Rule 1: Same row (move left)
-        # Using (coord - 1 + 5) % 5 handles negative results correctly
+    if r1 == r2: 
         decrypted_pair += key_table[r1][(c1 - 1 + 5) % 5]
         decrypted_pair += key_table[r2][(c2 - 1 + 5) % 5]
-    elif c1 == c2: # Rule 2: Same column (move up)
+    elif c1 == c2: 
         decrypted_pair += key_table[(r1 - 1 + 5) % 5][c1]
         decrypted_pair += key_table[(r2 - 1 + 5) % 5][c2]
-    else: # Rule 3: Forming a rectangle (same as encryption)
+    else: 
         decrypted_pair += key_table[r1][c2]
         decrypted_pair += key_table[r2][c1]
         
@@ -55,7 +54,7 @@ def decrypt(ciphertext, key):
     Main function to decrypt a ciphertext message.
     """
     key_table = generate_key_table(key)
-    # The ciphertext is already in pairs, so just split it
+    
     digraphs = [ciphertext[i:i + 2] for i in range(0, len(ciphertext), 2)]
     plaintext = ""
     for digraph in digraphs:
@@ -64,7 +63,7 @@ def decrypt(ciphertext, key):
 
 # --- Main execution block ---
 if __name__ == "__main__":
-    # Get user input
+    
     ciphertext_to_decrypt = input("Enter the ciphertext to decrypt: ").upper()
     secret_key = input("Enter the secret key: ")
 
